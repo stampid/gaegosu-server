@@ -43,11 +43,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// db.User = require("./user")(sequelize, Sequelize);
-// db.Pet = require("./pet")(sequelize, Sequelize);
-// db.Board = require("./board")(sequelize, Sequelize);
-// db.Comment = require("./comment")(sequelize, Sequelize);
-// db.Like = require("./like")(sequelize, Sequelize);
-// db.Sos = require("./sos")(sequelize, Sequelize);
-
 module.exports = db;
