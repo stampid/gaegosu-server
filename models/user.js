@@ -1,4 +1,4 @@
-"use strict";
+
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
         type: DataTypes.STRING
       },
-      proifleImage: {
+      profileImage: {
         allowNull: true,
         type: DataTypes.STRING
       },
