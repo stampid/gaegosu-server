@@ -22,7 +22,7 @@ module.exports = {
         allowNull: true,
         type: Sequelize.STRING
       },
-      proifleImage: {
+      profileImage: {
         allowNull: true,
         type: Sequelize.STRING
       },

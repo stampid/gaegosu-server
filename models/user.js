@@ -1,4 +1,6 @@
-"use strict";
+import crypto from "crypto";
+
+("use strict");
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -18,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
         type: DataTypes.STRING
       },
-      proifleImage: {
+      profileImage: {
         allowNull: true,
         type: DataTypes.STRING
       },
@@ -31,7 +33,24 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN
       }
     },
-    {}
+    {
+      hooks: {
+        beforeCreate: data => {
+          if (data.password.length) {
+            const shasum = crypto.createHash("sha1");
+            shasum.update(data.password);
+            data.password = shasum.digest("hex");
+          }
+        },
+        beforeFind: data => {
+          if (data.where.password.length) {
+            const shasum = crypto.createHash("sha1");
+            shasum.update(data.where.password);
+            data.where.password = shasum.digest("hex");
+          }
+        }
+      }
+    }
   );
   User.asshociate = function(models) {
     // associations can be defined here
