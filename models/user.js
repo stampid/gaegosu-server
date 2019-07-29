@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
           }
         },
         beforeFind: data => {
-          if (data.where.password.length) {
+          if (data.where.password) {
             const shasum = crypto.createHash("sha1");
             shasum.update(data.where.password);
             data.where.password = shasum.digest("hex");

@@ -1,0 +1,10 @@
+type LoginHandle {
+  isLogin: Boolean!
+  user: User
+  err: String
+  token: String
+}
+
+type Query {
+  localLogin(email: String!, password: String!): LoginHandle!
+}
