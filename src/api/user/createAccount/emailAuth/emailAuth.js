@@ -13,16 +13,14 @@ export default {
           if (data) return false;
 
           const randomWord = generateSecret();
+          sendSecretMail(address, randomWord);
 
           return EmailAuth.create({ email: address, randomWord });
         })
-        .then(emailAuth => {
-          const { email, randomWord } = emailAuth;
-          sendSecretMail(email, randomWord);
+        .then(_ => {
           return true;
         })
         .catch(err => {
-          console.log("errrr");
           console.log(err);
         });
 
