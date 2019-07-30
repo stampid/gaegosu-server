@@ -4,9 +4,11 @@ import dotenv from "dotenv";
 import { GraphQLServer } from "graphql-yoga";
 import logger from "morgan";
 import passport from "passport";
+import "./passport";
 import { sequelize } from "../models";
 import schema from "./schema";
 import { decodeJWT } from "./middleWare/jwtHelper";
+
 // import socketIo from "socket.io";
 
 dotenv.config();
@@ -55,6 +57,27 @@ const middlewares = () => {
   server.use(JWT);
 };
 middlewares();
+
+server.get("/kakao", passport.authenticate("kakao"));
+
+// server.get(
+//   "/oauth",
+//   passport.authenticate("kakao", {
+//     failureRedirect: "#!/login"
+//   })
+// );
+server.get(
+  "/oauth",
+  passport.authenticate("kakao", {
+    failureRedirect: "/api/auth/fail"
+  })
+);
+
+// router.get('/google/callback', passport.authenticate('google', {
+//   failureRedirect: '/markdown/auth/login'
+// }), (req, res) => {
+//   loginSuccessHandler(req, res);
+// });
 
 server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)
