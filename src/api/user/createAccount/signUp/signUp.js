@@ -1,4 +1,4 @@
-import { User } from "../../../../../models/index";
+import { User, Pet } from "../../../../../models/index";
 
 export default {
   Mutation: {
@@ -9,7 +9,8 @@ export default {
         password = "",
         profileImage = "https://d2x5ku95bkycr3.cloudfront.net/App_Themes/Common/images/profile/0_200.png",
         provider = "local",
-        admin = false
+        admin = false,
+        pets
       } = args;
 
       return User.create({
@@ -22,6 +23,28 @@ export default {
       })
         .then(data => {
           if (data) {
+            if (pets) {
+              const bulkPet = [];
+
+              for (let i = 0; i < pets.length; i += 1) {
+                pets[i].owner = data.id;
+                bulkPet.push(pets[i]);
+              }
+
+              return Pet.bulkCreate(bulkPet)
+                .then(_ => {
+                  return {
+                    status: true,
+                    err: null
+                  };
+                })
+                .catch(err => {
+                  return {
+                    status: false,
+                    err
+                  };
+                });
+            }
             return {
               status: true,
               err: null

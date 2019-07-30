@@ -6,10 +6,18 @@ type Mutation {
     profileImage: String
     provider: String
     admin: Boolean!
+    pets: [inputPet]
   ): signUpHandle!
 }
 
 type signUpHandle {
   status: Boolean!
   err: String
+}
+
+input inputPet {
+  name: String!
+  animal: String!
+  breeds: String!
+  profileImage: String!
 }

@@ -1,9 +1,0 @@
-type User {
-  id: Int!
-  nickName: String!
-  email: String
-  password: String
-  profileImage: String
-  provider: String
-  admin: Boolean
-}
