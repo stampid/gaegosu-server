@@ -1,22 +1,18 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Likes", {
+    return queryInterface.createTable("EmailAuths", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user: {
+      email: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
-      board: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      boardName: {
+      randomWord: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -31,6 +27,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Likes");
+    return queryInterface.dropTable("EmailAuths");
   }
 };

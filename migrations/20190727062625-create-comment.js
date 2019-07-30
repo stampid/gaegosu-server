@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      boardsId: {
+      board: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
