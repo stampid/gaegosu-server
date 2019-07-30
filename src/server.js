@@ -6,6 +6,7 @@ import logger from "morgan";
 import passport from "passport";
 import { sequelize } from "../models";
 import schema from "./schema";
+import { decodeJWT } from "./middleWare/jwtHelper";
 // import socketIo from "socket.io";
 
 dotenv.config();
@@ -14,15 +15,47 @@ dotenv.config();
 const { PORT } = process.env;
 // process 로 env 에 요소에 접근
 
-const server = new GraphQLServer({ schema });
-// graphQLserver 는 인자로 스키마를 받는다..
+const server = new GraphQLServer({
+  schema,
+  context: req => {
+    return {
+      req: req.request
+    };
+  }
+});
 
-server.use(logger("dev"));
-server.use(cors());
-server.use(cookieParser());
-server.use(passport.initialize());
-server.use(passport.session());
-//
+const JWT = async (req, res, next) => {
+  const token = req.get("x-jwt");
+
+  // 요청에서 토큰을 찾는다??
+  if (!token) {
+    // console.log("미들웨어에서 겟한 토큰이 없음");
+    return next();
+    // 없다면 패쓰
+  }
+  // else console.log("미들웨어에서 겟한 토큰-->", token);
+  try {
+    const nickName = await decodeJWT(token);
+    req.nickName = nickName;
+    // console.log(req.nickName);
+    return next();
+    // 있다면 에러처리하고 패쓰!
+  } catch (error) {
+    console.log("err");
+    return error;
+  }
+};
+
+const middlewares = () => {
+  server.use(logger("dev"));
+  server.use(cors());
+  server.use(cookieParser());
+  server.use(passport.initialize());
+  server.use(passport.session());
+  server.use(JWT);
+};
+middlewares();
+
 server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)
 );
