@@ -1,4 +1,5 @@
 import { User } from "../../../../../models/index";
+import { createJWT } from "../../../../middleWare/jwtHelper";
 
 export default {
   Query: {
@@ -7,11 +8,12 @@ export default {
       return User.findOne({ where: { email, password } })
         .then(data => {
           if (data) {
+            const token = createJWT(data.nickNmae);
             return {
               isLogin: true,
               user: data,
               err: null,
-              token: "token"
+              token
             };
           }
 
