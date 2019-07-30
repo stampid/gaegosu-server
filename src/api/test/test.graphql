@@ -1,3 +1,5 @@
 type Query {
   sayHello: String!
+  pet(id: Int!): Pet
+  user(id: Int!): User
 }

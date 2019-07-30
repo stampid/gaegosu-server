@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   const Sos = sequelize.define(
     "Sos",
     {
+      creator: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
       locationX: {
         allowNull: false,
         type: DataTypes.FLOAT
