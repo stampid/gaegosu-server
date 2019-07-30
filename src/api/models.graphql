@@ -1,0 +1,67 @@
+type User {
+  id: Int!
+  nickName: String!
+  email: String
+  password: String
+  profileImage: String
+  provider: String
+  admin: Boolean
+  pets: [Pet!]!
+  boards: [Board!]!
+  comments: [Comment!]!
+  likes: [Like!]!
+  sos: [Sos!]!
+}
+
+type Pet {
+  id: Int!
+  name: String!
+  animal: String
+  breeds: String
+  owner: User!
+  profileImage: String
+}
+
+type Board {
+  id: Int!
+  title: String!
+  content: String!
+  photo: String!
+  creator: User!
+  boardName: String!
+  comments: [Comment!]!
+  likes: [Like!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Comment {
+  id: Int!
+  creator: User!
+  board: Board!
+  content: String!
+  boardName: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Like {
+  id: Int!
+  user: User!
+  board: Board!
+  boardName: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Sos {
+  id: String!
+  locationX: String!
+  locationY: String!
+  content: String!
+  animalType: String!
+  creator: User!
+  status: Boolean!
+  createdAt: String!
+  updatedAt: String!
+}
