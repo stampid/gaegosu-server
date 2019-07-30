@@ -4,6 +4,14 @@ module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define(
     "Comment",
     {
+      creator: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
+      board: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
       content: {
         allowNull: false,
         type: DataTypes.STRING

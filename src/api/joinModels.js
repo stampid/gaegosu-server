@@ -1,3 +1,5 @@
+import { User, Pet } from "../../models/index";
+
 export default {
   Pet: {
     owner: async pet => {
@@ -7,7 +9,8 @@ export default {
   },
   User: {
     pets: async user => {
-      const pets = await user.getPet();
+      console.log(user.id);
+      const pets = await Pet.findAll({ where: { owner: user.id } });
       return pets;
     }
   }

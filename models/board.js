@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   const Board = sequelize.define(
     "Board",
     {
+      creator: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
       title: {
         allowNull: false,
         type: DataTypes.STRING(20)

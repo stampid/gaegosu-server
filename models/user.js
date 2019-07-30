@@ -1,8 +1,6 @@
-
 import crypto from "crypto";
 
 ("use strict");
-
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -54,9 +52,9 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   );
-  User.asshociate = function(models) {
+  User.associate = function(models) {
     // associations can be defined here
-    User.hasMany(models.Pet);
+    User.hasMany(models.Pet, { foreingKey: "owner" });
     User.hasMany(models.Board);
     User.hasMany(models.Comment);
     User.hasMany(models.Like);

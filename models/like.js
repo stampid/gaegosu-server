@@ -4,6 +4,14 @@ module.exports = (sequelize, DataTypes) => {
   const Like = sequelize.define(
     "Like",
     {
+      user: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
+      board: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
       boardName: {
         allowNull: false,
         type: DataTypes.STRING

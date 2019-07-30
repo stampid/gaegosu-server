@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   const Pet = sequelize.define(
     "Pet",
     {
+      owner: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
       name: {
         allowNull: false,
         type: DataTypes.STRING(12)
