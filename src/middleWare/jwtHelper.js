@@ -11,7 +11,11 @@ export const createJWT = nickName => {
 
 export const decodeJWT = token => {
   return jwt.verify(token, process.env.PRIVATE_KEY, (err, decode) => {
-    if (err) return console.log("false");
+    if (err) {
+      console.log("decode 함수에서 에러 발생");
+      return err;
+    }
+    console.log("decode 함수에서 에러 없음");
     return decode.nickName;
   });
 };
