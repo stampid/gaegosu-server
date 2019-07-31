@@ -8,7 +8,7 @@ import "./passport";
 import { sequelize } from "../models";
 import schema from "./schema";
 import { decodeJWT } from "./middleWare/jwtHelper";
-import { kakaoSignUp, kakaoSignIn } from "./controllers/KakaoSign";
+import kakaoSign from "./controllers/KakaoSign";
 // import socketIo from "socket.io";
 
 dotenv.config();
@@ -58,23 +58,14 @@ const middlewares = () => {
 };
 middlewares();
 
-server.get("/kakaoSignUp", passport.authenticate("kakao-SignUp"));
-server.get("/kakaoSignIn", passport.authenticate("kakao-SignIn"));
+server.get("/kakao", passport.authenticate("kakao"));
 
 server.get(
   "/oauth",
-  passport.authenticate("kakao-SignUp", {
+  passport.authenticate("kakao", {
     failureRedirect: "/api/auth/fail"
   }),
-  kakaoSignUp
-);
-
-server.get(
-  "/oauth",
-  passport.authenticate("kakao-SignIn", {
-    failureRedirect: "/api/auth/fail"
-  }),
-  kakaoSignIn
+  kakaoSign
 );
 
 server.start({ port: PORT }, () =>
