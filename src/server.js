@@ -72,7 +72,7 @@ server.get(
     failureRedirect: "/api/auth/fail"
   })
 );
-
+// 콜백으로 실행될 함수 선언!!
 // router.get('/google/callback', passport.authenticate('google', {
 //   failureRedirect: '/markdown/auth/login'
 // }), (req, res) => {
