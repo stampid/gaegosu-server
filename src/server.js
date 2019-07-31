@@ -4,9 +4,11 @@ import dotenv from "dotenv";
 import { GraphQLServer } from "graphql-yoga";
 import logger from "morgan";
 import passport from "passport";
+import "./passport";
 import { sequelize } from "../models";
 import schema from "./schema";
 import { decodeJWT } from "./middleWare/jwtHelper";
+import { kakaoSignUp, kakaoSignIn } from "./controllers/KakaoSign";
 // import socketIo from "socket.io";
 
 dotenv.config();
@@ -55,6 +57,25 @@ const middlewares = () => {
   server.use(JWT);
 };
 middlewares();
+
+server.get("/kakaoSignUp", passport.authenticate("kakao-SignUp"));
+server.get("/kakaoSignIn", passport.authenticate("kakao-SignIn"));
+
+server.get(
+  "/oauth",
+  passport.authenticate("kakao-SignUp", {
+    failureRedirect: "/api/auth/fail"
+  }),
+  kakaoSignUp
+);
+
+server.get(
+  "/oauth",
+  passport.authenticate("kakao-SignIn", {
+    failureRedirect: "/api/auth/fail"
+  }),
+  kakaoSignIn
+);
 
 server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)
