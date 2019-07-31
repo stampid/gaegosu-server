@@ -1,0 +1,9 @@
+type Query {
+  getMe(nickName: String!): isMe!
+}
+
+type isMe {
+  isMe: Boolean!
+  user: User
+  err: String
+}
