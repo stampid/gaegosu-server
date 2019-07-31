@@ -2,8 +2,8 @@ import jwt from "jsonwebtoken";
 
 require("dotenv").config();
 
-export const createJWT = nickName => {
-  const token = jwt.sign({ nickName }, process.env.PRIVATE_KEY, {
+export const createJWT = userinfo => {
+  const token = jwt.sign({ userinfo }, process.env.PRIVATE_KEY, {
     expiresIn: "10h"
   });
   return token;
@@ -16,6 +16,6 @@ export const decodeJWT = token => {
       return err;
     }
     console.log("decode 함수에서 에러 없음");
-    return decode.nickName;
+    return decode.userinfo;
   });
 };
