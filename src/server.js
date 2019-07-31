@@ -35,8 +35,8 @@ const JWT = async (req, res, next) => {
   }
   // else console.log("미들웨어에서 겟한 토큰-->", token);
   try {
-    const nickName = await decodeJWT(token);
-    req.nickName = nickName;
+    const userinfo = await decodeJWT(token);
+    req.userinfo = userinfo;
     // console.log(req.nickName);
     return next();
     // 있다면 에러처리하고 패쓰!

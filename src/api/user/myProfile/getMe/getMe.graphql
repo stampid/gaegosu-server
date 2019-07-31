@@ -1,5 +1,5 @@
 type Query {
-  getMe(nickName: String!): isMe!
+  getMe(id: Int!, nickName: String!): isMe!
 }
 
 type isMe {
