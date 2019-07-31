@@ -1,4 +1,4 @@
-import { User, Pet } from "../../models/index";
+import { Pet, Board } from "../../models/index";
 
 export default {
   Pet: {
@@ -9,9 +9,22 @@ export default {
   },
   User: {
     pets: async user => {
-      console.log(user.id);
       const pets = await Pet.findAll({ where: { owner: user.id } });
       return pets;
+    },
+    boards: async user => {
+      console.log("userId", user.id);
+      const boards = await Board.findAll({
+        where: { creator: user.id },
+        order: [["id", "DESC"]]
+      });
+      return boards;
+    }
+  },
+  Board: {
+    creator: async board => {
+      const user = await board.getUser();
+      return user;
     }
   }
 };
