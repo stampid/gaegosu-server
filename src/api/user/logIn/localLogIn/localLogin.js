@@ -8,7 +8,7 @@ export default {
       return User.findOne({ where: { email, password } })
         .then(data => {
           if (data) {
-            const token = createJWT(data.nickNmae);
+            const token = createJWT(data.nickName);
             return {
               isLogin: true,
               user: data,
