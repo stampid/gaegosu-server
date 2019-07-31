@@ -8,7 +8,7 @@ import "./passport";
 import { sequelize } from "../models";
 import schema from "./schema";
 import { decodeJWT } from "./middleWare/jwtHelper";
-
+import { kakaoSignUp, kakaoSignIn } from "./controllers/KakaoSign";
 // import socketIo from "socket.io";
 
 dotenv.config();
@@ -58,26 +58,24 @@ const middlewares = () => {
 };
 middlewares();
 
-server.get("/kakao", passport.authenticate("kakao"));
+server.get("/kakaoSignUp", passport.authenticate("kakao-SignUp"));
+server.get("/kakaoSignIn", passport.authenticate("kakao-SignIn"));
 
-// server.get(
-//   "/oauth",
-//   passport.authenticate("kakao", {
-//     failureRedirect: "#!/login"
-//   })
-// );
 server.get(
   "/oauth",
-  passport.authenticate("kakao", {
+  passport.authenticate("kakao-SignUp", {
     failureRedirect: "/api/auth/fail"
-  })
+  }),
+  kakaoSignUp
 );
-// 콜백으로 실행될 함수 선언!!
-// router.get('/google/callback', passport.authenticate('google', {
-//   failureRedirect: '/markdown/auth/login'
-// }), (req, res) => {
-//   loginSuccessHandler(req, res);
-// });
+
+server.get(
+  "/oauth",
+  passport.authenticate("kakao-SignIn", {
+    failureRedirect: "/api/auth/fail"
+  }),
+  kakaoSignIn
+);
 
 server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)

@@ -1,6 +1,6 @@
 import passport from "passport";
 import passportKakao from "passport-kakao";
-import { User } from "../models/index";
+// import { User } from "../models/index";
 
 const KakaoStrategy = passportKakao.Strategy;
 
@@ -11,10 +11,18 @@ const kakaoKey = {
 };
 
 passport.use(
-  "kakao",
+  "kakao-SignUp",
   new KakaoStrategy(kakaoKey, (accessToken, refreshToken, profile, done) => {
     console.log(profile);
-    // const { provider, id } = profile;
+    done(null, profile);
+  })
+);
+
+passport.use(
+  "kakao-SignIn",
+  new KakaoStrategy(kakaoKey, (accessToken, refreshToken, profile, done) => {
+    console.log(profile);
+    done(null, profile);
   })
 );
 
