@@ -1,11 +1,13 @@
 import passport from "passport";
 import passportKakao from "passport-kakao";
-// import { User } from "../models/index";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const KakaoStrategy = passportKakao.Strategy;
 
 const kakaoKey = {
-  clientID: "ffca1c967752ddb8d65ef5e6fbfe0d2a",
+  clientID: process.env.KAKAO_API,
   clientSecret: "",
   callbackURL: "http://localhost:4000/oauth"
 };
