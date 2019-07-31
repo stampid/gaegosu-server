@@ -5,7 +5,8 @@ export default {
     changePassWord: async (_, args, { req }) => {
       const { password } = args;
       const { nickName } = req;
-      if (nickName !== undefined) {
+
+      if (typeof nickName === "string") {
         return User.update({ password }, { where: { nickName } })
           .then(user => {
             if (user) {
