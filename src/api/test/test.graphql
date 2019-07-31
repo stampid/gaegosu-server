@@ -1,5 +1,16 @@
 type Query {
-  sayHello: String!
-  pet(id: Int!): Pet
-  user(id: Int!): User
+  testsayHello: String!
+  testpet(id: Int!): Pet
+  testuser(id: Int!): User
+  testboard(id: Int!): Board
+}
+
+type Mutation {
+  testcreateBoard(
+    creator: Int!
+    title: String!
+    content: String!
+    photo: String!
+    boardName: String!
+  ): Board!
 }
