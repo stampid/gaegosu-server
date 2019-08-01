@@ -2,10 +2,8 @@ import jwt from "jsonwebtoken";
 
 require("dotenv").config();
 
-
 export const createJWT = userinfo => {
   const token = jwt.sign({ userinfo }, process.env.PRIVATE_KEY, {
-
     expiresIn: "10h"
   });
   return token;
@@ -23,7 +21,7 @@ export const decodeJWT = token => {
   });
 };
 
-const JWT = async (req, res, next) => {
+export const JWT = async (req, res, next) => {
   const token = req.get("x-jwt");
 
   // 요청에서 토큰을 찾는다??
