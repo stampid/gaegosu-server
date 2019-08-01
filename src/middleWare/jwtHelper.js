@@ -19,3 +19,25 @@ export const decodeJWT = token => {
     return decode.nickName;
   });
 };
+
+export const JWT = async (req, res, next) => {
+  const token = req.get("x-jwt");
+
+  // 요청에서 토큰을 찾는다??
+  if (!token) {
+    // console.log("미들웨어에서 겟한 토큰이 없음");
+    return next();
+    // 없다면 패쓰
+  }
+  // else console.log("미들웨어에서 겟한 토큰-->", token);
+  try {
+    const nickName = await decodeJWT(token);
+    req.nickName = nickName;
+    // console.log(req.nickName);
+    return next();
+    // 있다면 에러처리하고 패쓰!
+  } catch (error) {
+    console.log("err");
+    return error;
+  }
+};
