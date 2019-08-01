@@ -1,4 +1,4 @@
-import { Pet, User, Board } from "../../../models/index";
+import { Pet, User, Board, Comment } from "../../../models/index";
 
 export default {
   Query: {
@@ -26,6 +26,21 @@ export default {
       })
         .then(board => {
           return board;
+        })
+        .catch(err => console.log(err));
+    },
+    testcreateComment: async (_, args) => {
+      const { creator, content, board, boardName } = args;
+      return Comment.create({
+        creator,
+        board,
+        content,
+
+        boardName
+      })
+        .then(Comment => {
+          console.log(Comment);
+          return Comment;
         })
         .catch(err => console.log(err));
     }
