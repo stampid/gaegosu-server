@@ -1,0 +1,9 @@
+type Mutation {
+  deleteAccount: deleteResult!
+}
+
+type deleteResult {
+  success: Boolean!
+  isLogin: Boolean!
+  err: String
+}
