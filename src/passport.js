@@ -13,17 +13,9 @@ const kakaoKey = {
 };
 
 passport.use(
-  "kakao-SignUp",
+  "kakao",
   new KakaoStrategy(kakaoKey, (accessToken, refreshToken, profile, done) => {
-    console.log(profile);
-    done(null, profile);
-  })
-);
-
-passport.use(
-  "kakao-SignIn",
-  new KakaoStrategy(kakaoKey, (accessToken, refreshToken, profile, done) => {
-    console.log(profile);
+    // console.log(profile);
     done(null, profile);
   })
 );

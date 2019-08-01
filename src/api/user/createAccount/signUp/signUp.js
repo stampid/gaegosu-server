@@ -59,7 +59,7 @@ export default {
         .catch(err => {
           return {
             status: false,
-            err: err.errors[0].message
+            err
           };
         });
     }
