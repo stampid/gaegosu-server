@@ -13,4 +13,11 @@ type Mutation {
     photo: String!
     boardName: String!
   ): Board!
+
+  testcreateComment(
+    creator: Int!
+    content: String!
+    boardName: String!
+    board: Int!
+  ): Comment!
 }
