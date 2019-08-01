@@ -27,7 +27,7 @@ type Board {
   title: String!
   content: String!
   photo: String!
-  creator: User!
+  creator: User
   boardName: String!
   comments: [Comment!]!
   likes: [Like!]!

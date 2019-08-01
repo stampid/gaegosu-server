@@ -47,6 +47,13 @@ module.exports = (sequelize, DataTypes) => {
             shasum.update(data.where.password);
             data.where.password = shasum.digest("hex");
           }
+        },
+        beforeBulkUpdate: data => {
+          if (data.attributes.password) {
+            const shasum = crypto.createHash("sha1");
+            shasum.update(data.attributes.password);
+            data.attributes.password = shasum.digest("hex");
+          }
         }
       }
     }
