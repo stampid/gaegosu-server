@@ -4,14 +4,16 @@ import dotenv from "dotenv";
 import { GraphQLServer } from "graphql-yoga";
 import logger from "morgan";
 import passport from "passport";
+import "./passport";
 import { sequelize } from "../models";
 import schema from "./schema";
-import { decodeJWT } from "./middleWare/jwtHelper";
+import { JWT } from "./middleWare/jwtHelper";
+import routes from "./routes";
+import { kakaoSign, kakaofail } from "./controllers/KakaoSign";
+
 // import socketIo from "socket.io";
 
 dotenv.config();
-// dotenv file 에 접근 가능하게 해준다.
-
 const { PORT } = process.env;
 // process 로 env 에 요소에 접근
 
@@ -24,28 +26,6 @@ const server = new GraphQLServer({
   }
 });
 
-const JWT = async (req, res, next) => {
-  const token = req.get("x-jwt");
-
-  // 요청에서 토큰을 찾는다??
-  if (!token) {
-    // console.log("미들웨어에서 겟한 토큰이 없음");
-    return next();
-    // 없다면 패쓰
-  }
-  // else console.log("미들웨어에서 겟한 토큰-->", token);
-  try {
-    const userinfo = await decodeJWT(token);
-    req.userinfo = userinfo;
-    // console.log(req.nickName);
-    return next();
-    // 있다면 에러처리하고 패쓰!
-  } catch (error) {
-    console.log("err");
-    return error;
-  }
-};
-
 const middlewares = () => {
   server.use(logger("dev"));
   server.use(cors());
@@ -55,6 +35,16 @@ const middlewares = () => {
   server.use(JWT);
 };
 middlewares();
+
+server.get(routes.kakao, passport.authenticate("kakao"));
+server.get(routes.kakaofail, kakaofail);
+server.get(
+  routes.oauth,
+  passport.authenticate("kakao", {
+    failureRedirect: "/kakaofail"
+  }),
+  kakaoSign
+);
 
 server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)

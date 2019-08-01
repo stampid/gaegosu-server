@@ -8,8 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       nickName: {
         allowNull: false,
-        type: DataTypes.STRING(12),
-        unique: true
+        type: DataTypes.STRING(12)
       },
       email: {
         allowNull: true,
@@ -36,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         beforeCreate: data => {
-          if (data.password.length) {
+          if (data.password) {
             const shasum = crypto.createHash("sha1");
             shasum.update(data.password);
             data.password = shasum.digest("hex");
