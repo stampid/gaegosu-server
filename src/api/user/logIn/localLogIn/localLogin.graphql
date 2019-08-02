@@ -5,6 +5,6 @@ type LoginHandle {
   token: String
 }
 
-type Query {
+type Mutation {
   localLogin(email: String!, password: String!): LoginHandle!
 }

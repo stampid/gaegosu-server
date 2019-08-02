@@ -2,7 +2,7 @@ import { User, EmailAuth } from "../../../../../models/index";
 import { generateSecret, sendSecretMail } from "../../../../utils/email";
 
 export default {
-  Query: {
+  Mutation: {
     emailSend: async (_, args) => {
       const { address } = args;
 
