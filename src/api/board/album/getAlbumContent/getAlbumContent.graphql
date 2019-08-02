@@ -1,0 +1,9 @@
+type Query {
+  getAlbumContent(id: Int): albumContentResult
+}
+
+type albumContentResult {
+  success: Boolean!
+  err: String
+  board: Board!
+}

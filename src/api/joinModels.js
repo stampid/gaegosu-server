@@ -1,4 +1,4 @@
-import { Pet, Board, Comment } from "../../models/index";
+import { Pet, Board, Comment, Like } from "../../models/index";
 
 export default {
   Pet: {
@@ -33,6 +33,13 @@ export default {
     creator: async board => {
       const user = await board.getUser();
       return user;
+    },
+    comments: async board => {
+      const comments = await Comment.findAll({
+        where: { board: board.id },
+        order: [["id", "DESC"]]
+      });
+      return comments;
     }
   }
 };

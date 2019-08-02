@@ -37,7 +37,7 @@ type Board {
 
 type Comment {
   id: Int!
-  creator: User!
+  creator: User
   board: Board!
   content: String!
   boardName: String!

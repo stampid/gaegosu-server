@@ -1,0 +1,15 @@
+type Mutation {
+  createAlbum(
+    title: String!
+    content: String!
+    creator: Int!
+    boardName: String!
+  ): albumResult!
+}
+
+type albumResult {
+  success: Boolean!
+  board: Board
+  err: String
+  isLogin: Boolean!
+}
