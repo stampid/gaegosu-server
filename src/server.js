@@ -10,7 +10,7 @@ import schema from "./schema";
 import { JWT } from "./middleWare/jwtHelper";
 import routes from "./routes";
 import { kakaoSign, kakaofail } from "./controllers/KakaoSign";
-import { uploadPhoto } from "./middleWare/multer";
+import uploadPhoto from "./middleWare/multer";
 
 // import socketIo from "socket.io";
 
@@ -47,6 +47,14 @@ server.get(
   }),
   kakaoSign
 );
+
+// 이미지 업로드 테스트용 엔드포인트
+// server.get("/", (req, res) => {
+//   if (req.file) {
+//     console.log(req.file);
+//     res.send(req.file);
+//   }
+// });
 
 server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)

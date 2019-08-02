@@ -1,5 +1,5 @@
 import multer from "multer";
-import multerS3 from "multer-s3";
+import s3Storage from "multer-sharp-s3";
 import aws from "aws-sdk";
 
 const s3 = new aws.S3({
@@ -8,21 +8,17 @@ const s3 = new aws.S3({
 });
 
 const multerPhoto = multer({
-  storage: multerS3({
+  storage: s3Storage({
     s3,
-    acl: "public-read",
-    bucket: "gaegosu/photo"
+    Acl: "public-read",
+    Bucket: "gaegosu/photo",
+    resize: {
+      width: 600,
+      heigth: 600
+    }
   })
 });
 
-const multerProfile = multer({
-  storage: multerS3({
-    s3,
-    acl: "public-read",
-    bucket: "gaegosu/profile"
-  })
-});
+const uploadPhoto = multerPhoto.single("photo");
 
-export const uploadPhoto = multerPhoto.single("photo");
-
-export const uploadProfile = multerProfile.single("profile");
+export default uploadPhoto;
