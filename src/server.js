@@ -10,6 +10,7 @@ import schema from "./schema";
 import { JWT } from "./middleWare/jwtHelper";
 import routes from "./routes";
 import { kakaoSign, kakaofail } from "./controllers/KakaoSign";
+import { uploadPhoto } from "./middleWare/multer";
 
 // import socketIo from "socket.io";
 
@@ -33,6 +34,7 @@ const middlewares = () => {
   server.use(passport.initialize());
   server.use(passport.session());
   server.use(JWT);
+  server.use(uploadPhoto);
 };
 middlewares();
 
