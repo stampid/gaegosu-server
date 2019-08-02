@@ -2,7 +2,7 @@ import { User } from "../../../../../models/index";
 import { createJWT } from "../../../../middleWare/jwtHelper";
 
 export default {
-  Query: {
+  Mutation: {
     localLogin: async (_, args) => {
       const { email, password } = args;
       return User.findOne({ where: { email, password } })
