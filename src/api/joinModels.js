@@ -41,5 +41,15 @@ export default {
       });
       return comments;
     }
+  },
+  Comment: {
+    creator: async comment => {
+      const user = await comment.getUser();
+      return user;
+    },
+    board: async comment => {
+      const board = await comment.getBoard();
+      return board;
+    }
   }
 };
