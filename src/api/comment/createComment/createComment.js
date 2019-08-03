@@ -17,7 +17,6 @@ export default {
         })
           .then(comment => {
             if (comment) {
-              console.log("작성 완료 ===================");
               return {
                 success: true,
                 err: null,
@@ -25,7 +24,6 @@ export default {
                 comment
               };
             }
-            console.log("작성 실패 =================");
             return {
               success: false,
               err: "can't create comment",
