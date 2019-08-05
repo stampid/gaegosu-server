@@ -6,7 +6,8 @@ export default {
       const { userinfo } = req;
 
       if (userinfo !== undefined && userinfo.id !== undefined) {
-        const { board, user, boardName } = args;
+        const { board, boardName } = args;
+        const user = userinfo.id;
         return Like.findOrCreate({
           where: { board, user },
           defaults: { board, user, boardName }
