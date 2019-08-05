@@ -1,0 +1,9 @@
+type Mutation {
+  toggleLike(board: Int!, user: Int!, boardName: String!): likeResult!
+}
+
+type likeResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+}
