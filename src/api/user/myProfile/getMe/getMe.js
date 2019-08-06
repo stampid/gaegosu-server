@@ -2,43 +2,42 @@ import { User } from "../../../../../models/index";
 
 export default {
   Query: {
-    getMe: (_, args, { req }) => {
-      const { id, nickName } = args;
+    getMe: (_, __, { req }) => {
       const { userinfo } = req;
-      let isMe = null;
-      if (
-        userinfo !== undefined &&
-        userinfo.id === id &&
-        userinfo.nickName === nickName
-      ) {
+      let isMe;
+      if (userinfo !== undefined && userinfo.id !== undefined) {
+        const { id, nickName } = userinfo;
         isMe = true;
-      } else {
-        isMe = false;
+
+        return User.findOne({ where: { id, nickName } })
+          .then(data => {
+            if (data) {
+              return {
+                isMe,
+                user: data,
+                err: null
+              };
+            }
+            return {
+              isMe: false,
+              user: null,
+              err: "can't find user"
+            };
+          })
+          .catch(err => {
+            return {
+              isMe: false,
+              user: null,
+              err
+            };
+          });
       }
 
-      console.log(req.userinfo);
-      return User.findOne({ where: { id, nickName } })
-        .then(data => {
-          if (data) {
-            return {
-              isMe,
-              user: data,
-              err: null
-            };
-          }
-          return {
-            isMe: false,
-            user: null,
-            err: "can't find user"
-          };
-        })
-        .catch(err => {
-          return {
-            isMe: false,
-            user: null,
-            err
-          };
-        });
+      return {
+        isMe: false,
+        user: null,
+        err: "token expire"
+      };
     }
   }
 };
