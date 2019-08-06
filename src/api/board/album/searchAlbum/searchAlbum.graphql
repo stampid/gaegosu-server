@@ -1,0 +1,14 @@
+type Mutation {
+  searchAlbum(
+    category: String!
+    searchWord: String!
+    lastId: Int
+    boardName: String!
+  ): searchAlbumResult!
+}
+
+type searchAlbumResult {
+  success: Boolean!
+  err: String
+  boards: [Board]
+}
