@@ -6,12 +6,10 @@ export default {
       const { userinfo } = req;
       if (userinfo !== undefined && userinfo.id !== undefined) {
         const { title, content, creator, boardName } = args;
-        let location;
+        let location =
+          "https://d2x5ku95bkycr3.cloudfront.net/App_Themes/Common/images/profile/0_200.png";
         if (req.file !== undefined) {
-          location = req.file;
-        } else {
-          location =
-            "https://d2x5ku95bkycr3.cloudfront.net/App_Themes/Common/images/profile/0_200.png";
+          location = req.file.Location;
         }
         return Board.create({
           creator,
