@@ -1,7 +1,7 @@
 import { User } from "../../../../../models/index";
 
 export default {
-  Mutationg: {
+  Mutation: {
     changeImage: (_, __, { req }) => {
       const { userinfo } = req;
       if (userinfo !== undefined && userinfo.id !== undefined) {

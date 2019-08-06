@@ -1,5 +1,5 @@
 type Mutation {
-  changeImage: changeImage!
+  changeImage: changeImageResult!
 }
 
 type changeImageResult {
