@@ -1,0 +1,10 @@
+type Mutation {
+  changeImage: changeImageResult!
+}
+
+type changeImageResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+  profileImage: String
+}

@@ -1,0 +1,9 @@
+type Query {
+  getFirstAlbum(boardName: String!): firstAlbumResult!
+}
+
+type firstAlbumResult {
+  success: Boolean!
+  boards: [Board!]
+  err: String
+}

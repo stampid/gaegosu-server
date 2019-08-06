@@ -1,0 +1,9 @@
+type Mutation {
+  deleteComment(id: Int!): deleteCommentResult!
+}
+
+type deleteCommentResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+}

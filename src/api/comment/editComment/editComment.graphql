@@ -1,0 +1,10 @@
+type Mutation {
+  editComment(id: Int!, content: String!): editCommentResult!
+}
+
+type editCommentResult {
+  success: Boolean!
+  err: String
+  comment: Comment
+  isLogin: Boolean!
+}

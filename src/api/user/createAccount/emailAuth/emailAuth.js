@@ -10,15 +10,20 @@ export default {
         where: { email: address }
       })
         .then(data => {
-          if (data) return false;
+          console.log(data);
+          if (data) {
+            console.log("이메일 있음");
+            return false;
+          }
 
           const randomWord = generateSecret();
           sendSecretMail(address, randomWord);
 
-          return EmailAuth.create({ email: address, randomWord });
-        })
-        .then(_ => {
-          return true;
+          return EmailAuth.create({ email: address, randomWord })
+            .then(_ => {
+              return true;
+            })
+            .catch(err => console.log(err));
         })
         .catch(err => {
           console.log(err);

@@ -1,0 +1,10 @@
+type Mutation {
+  editAlbum(id: Int!, title: String!, content: String!): editAlbumResult!
+}
+
+type editAlbumResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+  board: Board
+}
