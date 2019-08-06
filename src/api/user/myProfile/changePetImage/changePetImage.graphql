@@ -1,0 +1,10 @@
+type Mutation {
+  changePetImage(id: Int!): changePetImgResult!
+}
+
+type changePetImgResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+  profileImage: String
+}
