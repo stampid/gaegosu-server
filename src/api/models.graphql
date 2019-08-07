@@ -55,7 +55,7 @@ type Like {
 }
 
 type Sos {
-  id: String!
+  id: Int!
   locationX: String!
   locationY: String!
   content: String!
@@ -64,4 +64,20 @@ type Sos {
   status: Boolean!
   createdAt: String!
   updatedAt: String!
+}
+
+type Info {
+  id: Int!
+  title: String!
+  roadAddress: String!
+  phone: String
+  locationX: Float!
+  locationY: Float!
+  comments: [Comment!]!
+  ratings: Rate!
+}
+
+type Rate {
+  rate: Float!
+  user: [User!]!
 }

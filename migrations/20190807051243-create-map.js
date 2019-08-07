@@ -1,32 +1,32 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Comments", {
+    return queryInterface.createTable("Maps", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      creator: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      board: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      hospital: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      content: {
+      title: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      boardName: {
+      roadAddress: {
         allowNull: false,
         type: Sequelize.STRING
+      },
+      phone: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      locationX: {
+        allowNull: false,
+        type: Sequelize.DOUBLE
+      },
+      locationY: {
+        allowNull: false,
+        type: Sequelize.DOUBLE
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +39,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Comments");
+    return queryInterface.dropTable("Maps");
   }
 };

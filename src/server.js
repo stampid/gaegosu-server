@@ -52,7 +52,7 @@ server.get(
 // server.get("/", (req, res) => {
 //   if (req.file) {
 //     console.log(req.file);
-//     res.send(req.file);
+//     res.send(req.file.Location);
 //   }
 // });
 
