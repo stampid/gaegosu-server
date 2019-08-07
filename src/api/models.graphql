@@ -39,6 +39,7 @@ type Comment {
   id: Int!
   creator: User
   board: Board!
+  hospital: Info!
   content: String!
   boardName: String!
   createdAt: String!
@@ -74,10 +75,4 @@ type Info {
   locationX: Float!
   locationY: Float!
   comments: [Comment!]!
-  ratings: Rate!
-}
-
-type Rate {
-  rate: Float!
-  user: [User!]!
 }

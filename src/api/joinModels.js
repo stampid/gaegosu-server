@@ -50,6 +50,10 @@ export default {
     board: async comment => {
       const board = await comment.getBoard();
       return board;
+    },
+    hospital: async comment => {
+      const hospital = await comment.getMap();
+      return hospital;
     }
   },
   Info: {
