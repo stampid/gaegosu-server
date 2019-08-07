@@ -16,6 +16,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      hospital: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       content: {
         allowNull: false,
         type: Sequelize.STRING

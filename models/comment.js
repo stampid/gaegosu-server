@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER
       },
+      hospital: {
+        allowNull: false,
+        type: DataTypes.INTEGER
+      },
       content: {
         allowNull: false,
         type: DataTypes.STRING
@@ -26,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
   Comment.associate = function(models) {
     Comment.belongsTo(models.Board, { foreignKey: "board" });
     Comment.belongsTo(models.User, { foreignKey: "creator" });
+    Comment.belongsTo(models.Map, { foreignKey: "hospital" });
     // associations can be defined here
   };
   return Comment;

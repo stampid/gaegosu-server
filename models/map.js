@@ -28,6 +28,8 @@ module.exports = (sequelize, DataTypes) => {
   );
   Map.associate = function(models) {
     // associations can be defined here
+
+    Map.hasMany(models.Comment);
   };
   return Map;
 };

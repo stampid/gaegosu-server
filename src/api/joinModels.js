@@ -1,4 +1,4 @@
-import { Pet, Board, Comment, Like } from "../../models/index";
+import { Pet, Board, Comment, Like, Map } from "../../models/index";
 
 export default {
   Pet: {
@@ -50,6 +50,16 @@ export default {
     board: async comment => {
       const board = await comment.getBoard();
       return board;
+    }
+  },
+  Info: {
+    comments: async Info => {
+      const comments = await Comment.findAll({
+        where: { hospital: Info.id },
+        order: [["id", "DESC"]]
+      });
+
+      return comments;
     }
   }
 };
