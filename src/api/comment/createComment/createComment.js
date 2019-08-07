@@ -6,15 +6,22 @@ export default {
       const { userinfo } = req;
 
       if (userinfo !== undefined && userinfo.id !== undefined) {
-        const { board, boardName, content } = args;
+        const { boardId, boardName, content } = args;
         const { id } = userinfo;
 
-        return Comment.create({
+        const create = {
           creator: id,
-          board,
           boardName,
           content
-        })
+        };
+
+        if (boardName === "album") {
+          create.board = boardId;
+        } else if (boardName === "info") {
+          create.hospital = boardId;
+        }
+
+        return Comment.create(create)
           .then(comment => {
             if (comment) {
               return {

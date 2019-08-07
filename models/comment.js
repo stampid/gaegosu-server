@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       board: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.INTEGER
       },
       hospital: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.INTEGER
       },
       content: {

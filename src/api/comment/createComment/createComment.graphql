@@ -1,6 +1,6 @@
 type Mutation {
   createComment(
-    board: Int!
+    boardId: Int!
     boardName: String!
     content: String
   ): createCommentResult!
