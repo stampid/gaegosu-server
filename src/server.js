@@ -60,5 +60,5 @@ server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)
 );
 
-// sequelize.sync();
+sequelize.sync();
 // sequelize.sync()가 sync 가 되는순간 models 에 있는 스키마가 DB에 생성된다!

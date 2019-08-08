@@ -76,3 +76,10 @@ type Info {
   locationY: Float!
   comments: [Comment!]!
 }
+
+type Rate {
+  id: Int!
+  hospital: Info!
+  user: User!
+  rating: Int!
+}
