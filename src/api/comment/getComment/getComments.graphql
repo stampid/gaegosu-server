@@ -1,0 +1,15 @@
+type Query {
+  getComments(id: Int!, boardName: String!): getCommentsResult!
+}
+
+type getCommentsResult {
+  success: Boolean!
+  err: String
+  comments: [Comments!]!
+  isLogin: Boolean!
+}
+
+type Comments {
+  isMe: Boolean!
+  comment: Comment!
+}
