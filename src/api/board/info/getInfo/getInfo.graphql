@@ -1,0 +1,9 @@
+type Query {
+  getInfo(id: Int!): getInfoResult!
+}
+
+type getInfoResult {
+  success: Boolean!
+  err: String
+  info: Info
+}

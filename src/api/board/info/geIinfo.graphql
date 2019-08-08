@@ -1,9 +1,0 @@
-type Query {
-  getInfo(locationX: Float!, locationY: Float!): getInfoResult
-}
-
-type getInfoResult {
-  success: Boolean!
-  err: String
-  info: [Info!]!
-}

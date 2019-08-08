@@ -1,9 +1,9 @@
 import sequelize from "sequelize";
-import { Map } from "../../../../models/index";
+import { Map } from "../../../../../models/index";
 
 export default {
   Query: {
-    getInfo: (_, args) => {
+    getInfoList: (_, args) => {
       const { locationX, locationY } = args;
       const X = 0.003931;
       const Y = 0.008484;

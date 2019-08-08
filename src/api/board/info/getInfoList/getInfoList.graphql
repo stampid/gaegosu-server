@@ -1,0 +1,9 @@
+type Query {
+  getInfoList(locationX: Float!, locationY: Float!): getInfoListResult
+}
+
+type getInfoListResult {
+  success: Boolean!
+  err: String
+  info: [Info!]!
+}
