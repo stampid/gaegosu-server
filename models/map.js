@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
 
     Map.hasMany(models.Comment);
+    Map.hasMany(models.Rate);
   };
   return Map;
 };

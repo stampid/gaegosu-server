@@ -1,0 +1,9 @@
+type Mutation {
+  giveRate(hospitalId: Int!, rate: Int!): giveRateResult!
+}
+
+type giveRateResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+}

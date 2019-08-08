@@ -65,6 +65,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Comment);
     User.hasMany(models.Like);
     User.hasMany(models.Sos);
+    User.hasMany(models.Rate);
   };
   return User;
 };
