@@ -6,7 +6,7 @@ export default {
       const { userinfo } = req;
       const { hospital } = args;
       let isLogin = Boolean;
-      let meRate = null;
+      let meRate = 0;
       if (userinfo !== undefined && userinfo.id !== undefined) {
         isLogin = true;
       } else {
