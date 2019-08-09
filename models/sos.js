@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Sos.associate = function(models) {
     // associations can be defined here
-    Sos.belongsTo(models.Sos, { foreignKey: "creator" });
+    Sos.belongsTo(models.User, { foreignKey: "creator" });
   };
   return Sos;
 };

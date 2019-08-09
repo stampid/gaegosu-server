@@ -1,31 +1,29 @@
 import { Sos } from "../../../../../models/index";
 
 export default {
-  Query: {
-    getRescueList: (_, __, { req }) => {
+  Mutation: {
+    completeRescue: (_, args, { req }) => {
       const { userinfo } = req;
 
       if (userinfo !== undefined && userinfo.id !== undefined) {
-        return Sos.findAll({ order: [["status", "ASC"], ["id", "DESC"]] })
-          .then(sos => ({
+        const { id } = args;
+        return Sos.update({ status: true }, { where: { id } })
+          .then(_ => ({
             success: true,
             err: null,
-            isLogin: true,
-            rescueList: sos
+            isLogin: true
           }))
           .catch(err => ({
             success: false,
             err,
-            isLogin: true,
-            rescueList: null
+            isLogin: true
           }));
       }
 
       return {
         success: false,
         err: "token expire",
-        isLogin: false,
-        rescueList: null
+        isLogin: false
       };
     }
   }
