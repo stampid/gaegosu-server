@@ -20,10 +20,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING
       },
-      animalType: {
-        allowNull: false,
-        type: DataTypes.STRING
-      },
       status: {
         allowNull: false,
         type: DataTypes.BOOLEAN

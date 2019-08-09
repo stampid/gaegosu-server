@@ -1,0 +1,10 @@
+type Query {
+  getRescueList: getRescueListResult!
+}
+
+type getRescueListResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+  rescueList: [Sos!]
+}
