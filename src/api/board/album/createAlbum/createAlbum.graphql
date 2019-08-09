@@ -2,8 +2,8 @@ type Mutation {
   createAlbum(
     title: String!
     content: String!
-    creator: Int!
     boardName: String!
+    photo: String!
   ): albumResult!
 }
 

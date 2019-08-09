@@ -5,5 +5,7 @@ type Query {
 type albumContentResult {
   success: Boolean!
   err: String
-  board: Board!
+  isMe: Boolean!
+  isLogin: Boolean!
+  board: Board
 }
