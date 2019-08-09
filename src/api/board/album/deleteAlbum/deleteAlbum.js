@@ -8,9 +8,9 @@ export default {
       if (userinfo !== undefined && userinfo.id !== undefined) {
         const { id } = args;
 
-        return Comment.destroy({ where: { board: id } })
-          .then(_ => Like.destroy({ where: { board: id } }))
-          .then(_ => Board.destroy({ where: { id } }))
+        return Comment.destroy({ where: { board: id, creator: userinfo.id } })
+          .then(_ => Like.destroy({ where: { board: id, user: userinfo.id } }))
+          .then(_ => Board.destroy({ where: { id, creator: userinfo.id } }))
           .then(_ => ({
             success: true,
             err: null,
