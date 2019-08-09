@@ -65,5 +65,11 @@ export default {
 
       return comments;
     }
+  },
+  Sos: {
+    creator: async sos => {
+      const user = await sos.getUser();
+      return user;
+    }
   }
 };

@@ -1,0 +1,9 @@
+type Mutation {
+  completeRescue(id: Int!): completeRescueResult!
+}
+
+type completeRescueResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+}
