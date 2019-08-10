@@ -49,12 +49,14 @@ server.get(
 );
 
 // 이미지 업로드 테스트용 엔드포인트
-// server.get("/", (req, res) => {
-//   if (req.file) {
-//     console.log(req.file);
-//     res.send(req.file.Location);
-//   }
-// });
+server.use("/photo", (req, res) => {
+  if (req.file) {
+    console.log(req.file);
+    res.send(req.file.Location);
+  } else {
+    res.send("fail");
+  }
+});
 
 server.start({ port: PORT }, () =>
   console.log(`Server running on http://localhost:${PORT}`)
