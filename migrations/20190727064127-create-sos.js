@@ -10,11 +10,11 @@ module.exports = {
       },
       locationX: {
         allowNull: false,
-        type: Sequelize.FLOAT
+        type: Sequelize.DOUBLE
       },
       locationY: {
         allowNull: false,
-        type: Sequelize.FLOAT
+        type: Sequelize.DOUBLE
       },
       content: {
         allowNull: false,
@@ -27,6 +27,10 @@ module.exports = {
       status: {
         allowNull: false,
         type: Sequelize.BOOLEAN
+      },
+      photo: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
