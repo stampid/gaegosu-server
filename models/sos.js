@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       locationX: {
         allowNull: false,
-        type: DataTypes.FLOAT
+        type: DataTypes.DOUBLE
       },
       locationY: {
         allowNull: false,
-        type: DataTypes.FLOAT
+        type: DataTypes.DOUBLE
       },
       content: {
         allowNull: false,
@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       status: {
         allowNull: false,
         type: DataTypes.BOOLEAN
+      },
+      photo: {
+        allowNull: false,
+        type: DataTypes.STRING
       }
     },
     {}
