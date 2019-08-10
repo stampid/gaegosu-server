@@ -21,15 +21,20 @@ export const kakaoSign = async (req, res) => {
           "!!!!!!!!!!!!!!!!!!data is case old-->!!!!!!!!!!!!!!!!!!!!!!"
         );
         const token = createJWT({ id: data.id, nickName: data.nickName });
-        res.send({
-          isLogin: true,
-          user: data,
-          err: null,
-          token
-        });
+
+        res.redirect(`http://localhost:3000/kakao?token=${token}`);
+
+        // res.send({
+        //   isLogin: true,
+        //   user: data,
+        //   err: null,
+        //   token
+        // });
         return;
       }
-      return User.create({
+
+      // return User.create({
+      User.create({
         email,
         nickName,
         admin: false,
@@ -42,22 +47,25 @@ export const kakaoSign = async (req, res) => {
           id: newdata.id,
           nickName: newdata.nickName
         });
-        res.send({
-          isLogin: true,
-          user: newdata,
-          err: null,
-          token
-        });
+
+        res.redirect(`http://localhost:3000/kakao?token=${token}`);
+        // res.send({
+        //   isLogin: true,
+        //   user: newdata,
+        //   err: null,
+        //   token
+        // });
       });
     })
     .catch(err => console.log(err));
 };
 
 export const kakaofail = (req, res) => {
-  res.send({
-    isLogin: false,
-    user: null,
-    err: "fail to Sign with kakao, please try again.",
-    token: null
-  });
+  res.redirect(`http://localhost:3000/kakao?token=${null}`);
+  // res.send({
+  //   isLogin: false,
+  //   user: null,
+  //   err: "fail to Sign with kakao, please try again.",
+  //   token: null
+  // });
 };
