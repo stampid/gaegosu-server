@@ -9,20 +9,15 @@ export default {
         password = "",
         provider = "local",
         admin = false,
+        profileImage = "https://d2x5ku95bkycr3.cloudfront.net/App_Themes/Common/images/profile/0_200.png",
         pets
       } = args;
-
-      let profileImg =
-        "https://d2x5ku95bkycr3.cloudfront.net/App_Themes/Common/images/profile/0_200.png";
-      if (req.file !== undefined) {
-        profileImg = req.file.Location;
-      }
 
       return User.create({
         nickName,
         email,
         password,
-        profileImg,
+        profileImage,
         provider,
         admin
       })

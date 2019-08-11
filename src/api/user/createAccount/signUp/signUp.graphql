@@ -4,6 +4,7 @@ type Mutation {
     email: String
     password: String
     provider: String
+    profileImage: String
     admin: Boolean!
     pets: [inputPet]
   ): signUpHandle!
