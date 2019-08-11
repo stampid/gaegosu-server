@@ -13,8 +13,8 @@ const multerPhoto = multer({
     Acl: "public-read",
     Bucket: "gaegosu/photo",
     resize: {
-      width: 600,
-      heigth: 600
+      width: 400,
+      heigth: 400
     }
   })
 });

@@ -48,11 +48,13 @@ server.get(
   kakaoSign
 );
 
-// 이미지 업로드 테스트용 엔드포인트
-server.use("/photo", (req, res) => {
+// 이미지 업로드 엔드포인트
+server.post("/photo", (req, res) => {
   if (req.file) {
     console.log(req.file);
-    res.send(req.file.Location);
+    const url = req.file.Location;
+    res.status(200);
+    res.send(JSON.stringify(url));
   } else {
     res.send("fail");
   }
