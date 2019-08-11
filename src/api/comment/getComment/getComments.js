@@ -5,14 +5,23 @@ export default {
     getComments: (_, args, { req }) => {
       const { userinfo } = req;
       const { id, boardName } = args;
+      const where = {
+        boardName
+      };
       let isLogin = false;
 
       if (userinfo !== undefined && userinfo.id !== undefined) {
         isLogin = true;
       }
 
+      if (boardName === "info") {
+        where.hospital = id;
+      } else {
+        where.board = id;
+      }
+
       return Comment.findAll({
-        where: { board: id, boardName }
+        where
       })
         .then(data => {
           if (data) {
