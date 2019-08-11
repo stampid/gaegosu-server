@@ -1,10 +1,9 @@
 type Mutation {
-  changeImage: changeImageResult!
+  changeImage(profileImage: String!): changeImageResult!
 }
 
 type changeImageResult {
   success: Boolean!
   err: String
   isLogin: Boolean!
-  profileImage: String
 }
