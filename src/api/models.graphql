@@ -62,6 +62,7 @@ type Sos {
   animalType: String!
   creator: User!
   status: Boolean!
+  photo: String!
   createdAt: String!
   updatedAt: String!
 }

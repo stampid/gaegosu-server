@@ -24,7 +24,7 @@ export const kakaoSign = async (req, res) => {
       if (data) {
         const token = createJWT({ id: data.id, nickName: data.nickName });
 
-        res.redirect(`http://localhost:3000/kakao?token=${token}`);
+        res.redirect(`http://localhost:3000/#/kakao/${token}`);
 
         return;
       }
@@ -41,12 +41,12 @@ export const kakaoSign = async (req, res) => {
           nickName: newdata.nickName
         });
 
-        res.redirect(`http://localhost:3000/kakao?token=${token}`);
+        res.redirect(`http://localhost:3000/#/kakao/${token}`);
       });
     })
     .catch(err => console.log(err));
 };
 
 export const kakaofail = (req, res) => {
-  res.redirect(`http://localhost:3000/kakao?token=${null}`);
+  res.redirect(`http://localhost:3000/#/kakao/${null}`);
 };
