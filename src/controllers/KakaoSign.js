@@ -24,7 +24,9 @@ export const kakaoSign = async (req, res) => {
       if (data) {
         const token = createJWT({ id: data.id });
 
-        res.redirect(`http://localhost:3000/#/kakao/${token}`);
+        res.redirect(
+          `http://gaegosu-client.s3-website.ap-northeast-2.amazonaws.com/#/kakao/${token}`
+        );
 
         return;
       }
@@ -40,12 +42,16 @@ export const kakaoSign = async (req, res) => {
           id: newdata.id
         });
 
-        res.redirect(`http://localhost:3000/#/kakao/${token}`);
+        res.redirect(
+          `http://gaegosu-client.s3-website.ap-northeast-2.amazonaws.com/#/kakao/${token}`
+        );
       });
     })
     .catch(err => console.log(err));
 };
 
 export const kakaofail = (req, res) => {
-  res.redirect(`http://localhost:3000/#/kakao/${null}`);
+  res.redirect(
+    `http://gaegosu-client.s3-website.ap-northeast-2.amazonaws.com/#/kakao/${null}`
+  );
 };
