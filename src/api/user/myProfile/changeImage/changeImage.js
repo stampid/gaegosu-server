@@ -5,10 +5,10 @@ export default {
     changeImage: (_, args, { req }) => {
       const { userinfo } = req;
       if (userinfo !== undefined && userinfo.id !== undefined) {
-        const { id, nickName } = userinfo;
+        const { id } = userinfo;
         const { profileImage } = args;
 
-        return User.update({ profileImage }, { where: { id, nickName } })
+        return User.update({ profileImage }, { where: { id } })
           .then(_ => ({
             success: true,
             err: null,

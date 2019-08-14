@@ -5,8 +5,8 @@ export default {
   Query: {
     getInfoList: (_, args) => {
       const { locationX, locationY } = args;
-      const X = 0.003931;
-      const Y = 0.008484;
+      const X = 0.003931 * 2;
+      const Y = 0.008484 * 2;
 
       const where = {
         [sequelize.Op.and]: {

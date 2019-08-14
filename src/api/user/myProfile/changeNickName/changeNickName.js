@@ -7,11 +7,8 @@ export default {
       const { userinfo } = req;
 
       if (userinfo !== undefined && userinfo.id !== undefined) {
-        const { id, nickName } = userinfo;
-        return User.update(
-          { nickName: newNickName },
-          { where: { id, nickName } }
-        )
+        const { id } = userinfo;
+        return User.update({ nickName: newNickName }, { where: { id } })
           .then(data => {
             if (data) {
               return {
