@@ -6,10 +6,10 @@ export default {
       const { userinfo } = req;
       let isMe;
       if (userinfo !== undefined && userinfo.id !== undefined) {
-        const { id, nickName } = userinfo;
+        const { id } = userinfo;
         isMe = true;
 
-        return User.findOne({ where: { id, nickName } })
+        return User.findOne({ where: { id } })
           .then(data => {
             if (data) {
               return {
