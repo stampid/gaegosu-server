@@ -22,7 +22,7 @@ export const kakaoSign = async (req, res) => {
   })
     .then(data => {
       if (data) {
-        const token = createJWT({ id: data.id, nickName: data.nickName });
+        const token = createJWT({ id: data.id });
 
         res.redirect(`http://localhost:3000/#/kakao/${token}`);
 
