@@ -18,7 +18,7 @@ export const kakaoSign = async (req, res) => {
   } = user;
 
   return User.findOne({
-    where: { email, nickName, admin: false, provider }
+    where: { email, admin: false, provider }
   })
     .then(data => {
       if (data) {
@@ -37,8 +37,7 @@ export const kakaoSign = async (req, res) => {
         provider
       }).then(newdata => {
         const token = createJWT({
-          id: newdata.id,
-          nickName: newdata.nickName
+          id: newdata.id
         });
 
         res.redirect(`http://localhost:3000/#/kakao/${token}`);
