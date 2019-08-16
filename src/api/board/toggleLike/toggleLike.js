@@ -15,7 +15,7 @@ export default {
           .then(([like, created]) => {
             if (!created) {
               const { id } = like;
-              Like.destroy({ where: { board, user, id } }).then(_ => {
+              return Like.destroy({ where: { board, user, id } }).then(_ => {
                 return {
                   success: true,
                   err: null,
