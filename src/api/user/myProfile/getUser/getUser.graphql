@@ -1,0 +1,9 @@
+type Query {
+  getUser(id: Int!): isMe!
+}
+
+type isMe {
+  isMe: Boolean!
+  user: User
+  err: String
+}

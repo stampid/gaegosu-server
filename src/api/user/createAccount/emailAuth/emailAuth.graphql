@@ -1,0 +1,4 @@
+type Mutation {
+  emailSend(address: String!): Boolean!
+  emailAuth(address: String!, randomWord: String!): Boolean!
+}

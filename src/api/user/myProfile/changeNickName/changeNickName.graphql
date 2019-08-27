@@ -1,0 +1,9 @@
+type Mutation {
+  changeNickName(newNickName: String!): Result!
+}
+
+type Result {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+}

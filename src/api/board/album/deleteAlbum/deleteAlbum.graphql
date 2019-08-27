@@ -1,0 +1,9 @@
+type Mutation {
+  deleteAlbum(id: Int!): deleteAlbumResult
+}
+
+type deleteAlbumResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+}

@@ -1,0 +1,14 @@
+type Mutation {
+  createComment(
+    boardId: Int!
+    boardName: String!
+    content: String
+  ): createCommentResult!
+}
+
+type createCommentResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+  comment: Comment
+}

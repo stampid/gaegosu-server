@@ -1,0 +1,11 @@
+type Query {
+  getRate(hospital: Int!): getRateResult!
+}
+
+type getRateResult {
+  success: Boolean!
+  meRate: Int
+  err: String
+  isLogin: Boolean
+  rate: Float
+}

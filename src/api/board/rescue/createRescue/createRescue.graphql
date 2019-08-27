@@ -1,0 +1,14 @@
+type Mutation {
+  createRescue(
+    locationX: Float!
+    locationY: Float!
+    content: String!
+    photo: String!
+  ): createRescueResult!
+}
+
+type createRescueResult {
+  success: Boolean!
+  err: String
+  isLogin: Boolean!
+}

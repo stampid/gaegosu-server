@@ -1,0 +1,11 @@
+type Query {
+  getAlbumContent(id: Int): albumContentResult
+}
+
+type albumContentResult {
+  success: Boolean!
+  err: String
+  isMe: Boolean!
+  isLogin: Boolean!
+  board: Board
+}

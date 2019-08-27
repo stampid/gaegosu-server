@@ -1,0 +1,23 @@
+type Query {
+  testsayHello: String!
+  testpet(id: Int!): Pet
+  testuser(id: Int!): User
+  testboard(id: Int!): Board
+}
+
+type Mutation {
+  testcreateBoard(
+    creator: Int!
+    title: String!
+    content: String!
+    photo: String!
+    boardName: String!
+  ): Board!
+
+  testcreateComment(
+    creator: Int!
+    content: String!
+    boardName: String!
+    board: Int!
+  ): Comment!
+}

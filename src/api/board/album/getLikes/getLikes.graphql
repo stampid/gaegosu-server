@@ -1,0 +1,9 @@
+type Query {
+  getLikes(board: Int!, boardName: String!): getLikesResult
+}
+
+type getLikesResult {
+  isLike: Boolean!
+  likesCount: Int!
+  err: String
+}
